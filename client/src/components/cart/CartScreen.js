@@ -24,81 +24,78 @@ const CartScreen = () => {
     dispatch({ type: "CART_ADD_ITEM", payload: { ...item, quantity } });
   };
   return (
-    <div className="inner">
-      <h3 className="">Shopping Cart</h3>
-      {cartItems.length === 0 ? (
-        <div>
-          Cart is empty. <Link href="/">Go shopping</Link>
-        </div>
-      ) : (
-        <div className="">
-          <div className="">
-            <table className="">
-              <thead className="">
-                <tr>
-                  <th className="">Item</th>
-                  <th className="">Quantity</th>
-                  <th className="">Price</th>
-                  <th className="">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {cartItems.map((item) => (
-                  <tr key={item.slug} className="">
-                    <td>
-                      <Link to={`/products/${item.slug}`}>
-                        <div className="">
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            width={50}
-                            height={50}
-                          />
-                          &nbsp;
-                          {item.name}
-                        </div>
-                      </Link>
-                    </td>
-                    <td className="">
-                      <select
-                        value={item.quantity}
-                        onChange={(e) =>
-                          updateCartHandler(item, e.target.value)
-                        }
-                      >
-                        {[...Array(item.countInStock).keys()].map((x) => (
-                          <option key={x + 1} value={x + 1}>
-                            {x + 1}
-                          </option>
-                        ))}
-                      </select>
-                    </td>
-                    <td className="">${item.price}</td>
-                    <td className="">
-                      <button onClick={() => removeItemHandler(item)}>
-                        Delete
-                      </button>
-                    </td>
+    <div className="p_cart">
+      <div className="inner">
+        <h3 className="h3title">Shopping Cart</h3>
+        {cartItems.length === 0 ? (
+          <div>
+            Cart is empty. <Link href="/">Go shopping</Link>
+          </div>
+        ) : (
+          <div className="cart_cont">
+            <div className="cart_table">
+              <table>
+                <thead>
+                  <tr>
+                    <th className="">Item</th>
+                    <th className="">Quantity</th>
+                    <th className="">Price</th>
+                    <th className="">Remove</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="">
-            <ul>
-              <li>
-                <div className="">
-                  Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : $
-                  {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
-                </div>
-              </li>
-              <li>
+                </thead>
+                <tbody>
+                  {cartItems.map((item) => (
+                    <tr key={item.slug} className="">
+                      <td className="box01">
+                        <Link to={`/products/${item.slug}`}>
+                          <figure>
+                            <img src={item.image} alt={item.name} width={100} />
+                          </figure>
+                          <p className="cart_txt01">{item.name}</p>
+                        </Link>
+                      </td>
+                      <td className="">
+                        <select
+                          value={item.quantity}
+                          onChange={(e) =>
+                            updateCartHandler(item, e.target.value)
+                          }
+                        >
+                          {[...Array(item.countInStock).keys()].map((x) => (
+                            <option key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
+                      <td className="price">
+                        <span>${item.price}</span>
+                      </td>
+                      <td>
+                        <button
+                          className="btn_delete"
+                          onClick={() => removeItemHandler(item)}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="cart_total">
+              <div className="total">
+                Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : $
+                {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
+              </div>
+              <div className="btn_primary">
                 <Link to={"/order"}>Đặt Hàng</Link>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

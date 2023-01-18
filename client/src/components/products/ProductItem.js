@@ -24,8 +24,8 @@ const ProductItem = ({ product }) => {
         <div className="section">
           <h3>{product.name}</h3>
           <p className="p_info">
-            <span className="brand">{product.brand}</span>
             <span className="price">${product.price}</span>
+            <span className="brand">{product.brand}</span>
           </p>
         </div>
       </Link>

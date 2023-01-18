@@ -26,31 +26,39 @@ const Login = () => {
   return (
     <div id="login">
       <div className="inner">
-        <form onSubmit={handleSubmit}>
-          <h1>Sign In</h1>
-
-          <label>Username</label>
-          <input
-            ref={emailRef}
-            name="email"
-            placeholder="Username"
-            value={inputField.email}
-            onChange={handleChange}
-          />
-          <br />
-
-          <label>Password</label>
-          <input
-            ref={passwRef}
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={inputField.password}
-            onChange={handleChange}
-          />
-          <br />
-          <input type="submit" />
-        </form>
+        <h3 className="h3title">Sign In</h3>
+        <div className="login_form">
+          <form onSubmit={handleSubmit}>
+            <ul className="c_form">
+              <li>
+                <label>Username</label>
+                <input
+                  className="input_cus"
+                  ref={emailRef}
+                  name="email"
+                  placeholder="Email / Username"
+                  value={inputField.email}
+                  onChange={handleChange}
+                />
+              </li>
+              <li>
+                <label>Password</label>
+                <input
+                  className="input_cus"
+                  ref={passwRef}
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={inputField.password}
+                  onChange={handleChange}
+                />
+              </li>
+              <li className="box_submit">
+                <input className="btn_submit" type="submit" value="Login" />
+              </li>
+            </ul>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { createRef, useState } from "react";
 import OrderModule from "../../modules/order.module";
 
 const OrderForm = () => {
-  const { nameRef, phoneRef, addressRef} = createRef();
+  const { nameRef, phoneRef, addressRef } = createRef();
   const [inputField, setInputField] = useState({});
   const handleChange = (event) => {
     setInputField({
@@ -21,49 +21,59 @@ const OrderForm = () => {
     }
   };
 
-
   return (
     <div id="order">
       <div className="inner">
-        <form onSubmit={handleSubmit}>
-          <div className="order_cont">
-            <ul className="info">
-              <li>
-                <label>Họ Tên:</label>
-                <input
-                  ref={nameRef}
-                  name="name"
-                  placeholder="Họ Và Tên"
-                  value={inputField.name || ""}
-                  onChange={handleChange}
-                />
-              </li>
-              <li>
-                <label>Số Điện Thoại:</label>
-                <input
-                  ref={phoneRef}
-                  type="number"
-                  name="phone"
-                  placeholder="Số Điện Thoại"
-                  value={inputField.phone || ""}
-                  onChange={handleChange}
-                />
-              </li>
-              <li>
-                <label>Địa chỉ:</label>
-                <input
-                  ref={addressRef}
-                  name="address"
-                  placeholder="Địa Chỉ"
-                  value={inputField.address || ""} 
-                  onChange={handleChange}
-                />
-              </li>
-              <input type="submit"/>
-            </ul>
-            <div className="product_order"></div>
-          </div>
-        </form>
+        <h3 className="h3title">Order</h3>
+        <div className="order_form">
+          <form onSubmit={handleSubmit}>
+            <div className="order_cont">
+              <ul className="c_form">
+                <li>
+                  <label>Name</label>
+                  <input
+                    className="input_cus"
+                    ref={nameRef}
+                    name="name"
+                    placeholder="Name"
+                    required
+                    value={inputField.name}
+                    onChange={handleChange}
+                  />
+                </li>
+                <li>
+                  <label>Phone Number</label>
+                  <input
+                    className="input_cus"
+                    ref={phoneRef}
+                    type="number"
+                    name="phone"
+                    placeholder="Phone Number"
+                    required
+                    value={inputField.phone}
+                    onChange={handleChange}
+                  />
+                </li>
+                <li>
+                  <label>Address</label>
+                  <input
+                    className="input_cus"
+                    ref={addressRef}
+                    name="address"
+                    placeholder="Address"
+                    required
+                    value={inputField.address}
+                    onChange={handleChange}
+                  />
+                </li>
+                <li className="box_submit">
+                  <input className="btn_submit" type="submit" value="Order" />
+                </li>
+              </ul>
+              <div className="product_order"></div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

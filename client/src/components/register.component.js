@@ -18,7 +18,6 @@ const Register = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // userRegister(inputField);
     let registerUser = await AccountModule.register(inputField);
     if (registerUser.success) {
       let userLogin = await AccountModule.login(inputField);
@@ -33,55 +32,64 @@ const Register = (props) => {
   };
 
   return (
-    <div className="register">
+    <div id="register">
       <div className="inner">
-        <h3>Sign Up For An Account</h3>
-
-        <form onSubmit={handleSubmit}>
-          <ul>
-            <li>
-              <label>Username</label>
-              <input
-                name="username"
-                placeholder="Username"
-                value={inputField.username}
-                onChange={handleChange}
-              />
-            </li>
-            <li>
-              <label>Password</label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={inputField.password}
-                onChange={handleChange}
-              />
-            </li>
-            <li>
-              <label>Email</label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={inputField.email}
-                onChange={handleChange}
-              />
-            </li>
-            <li>
-              <label>Bio</label>
-              <textarea
-                name="bio"
-                placeholder="Bio"
-                value={inputField.bio}
-                onChange={handleChange}
-              />
-            </li>
-            <li>
-              <input type="submit" />
-            </li>
-          </ul>
-        </form>
+        <h3 className="h3title">Sign Up For An Account</h3>
+        <div className="register_form">
+          <form onSubmit={handleSubmit}>
+            <ul className="c_form">
+              <li>
+                <label>Username</label>
+                <input
+                  className="input_cus"
+                  name="username"
+                  placeholder="Username"
+                  required
+                  value={inputField.username}
+                  onChange={handleChange}
+                />
+              </li>
+              <li>
+                <label>Password</label>
+                <input
+                  className="input_cus"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  required
+                  value={inputField.password}
+                  onChange={handleChange}
+                />
+              </li>
+              <li>
+                <label>Email</label>
+                <input
+                  className="input_cus"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                  value={inputField.email}
+                  onChange={handleChange}
+                />
+              </li>
+              <li className="box_textarea">
+                <label>Bio</label>
+                <textarea
+                  className="textarea_cus"
+                  name="bio"
+                  placeholder="Bio"
+                  required
+                  value={inputField.bio}
+                  onChange={handleChange}
+                />
+              </li>
+              <li className="box_submit">
+                <input className="btn_submit" type="submit" />
+              </li>
+            </ul>
+          </form>
+        </div>
       </div>
     </div>
   );
