@@ -84,13 +84,10 @@ users.post("/login", async (req, res) => {
       });
     }
   } catch (err) {
-    console.log("🚀 ~ file: users.js:62 ~ users.post ~ err", err);
     res.status(400).send({
       message: err.message,
     });
   }
-
-  console.log("test test");
   res.send({
     success: false,
   });
