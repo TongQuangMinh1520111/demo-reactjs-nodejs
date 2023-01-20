@@ -1,17 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Auth } from "../context/Auth";
+// import { Auth } from "../context/Auth";
 import { Store } from "../context/Store";
 
 const Header = () => {
-  const { dispatch } = useContext(Auth);
+  // const { dispatch } = useContext(Auth);
   const { state } = useContext(Store);
   const { cart } = state;
   const [cartItemsCount, setCartItemsCount] = useState(0);
   const handleClickRender = () => {
-    dispatch({
-      type: "CHECK_RENDER_FALSE",
-    });
+    console.log("link")
+    // dispatch({
+    //   type: "CHECK_RENDER_FALSE",
+    // });
   };
   useEffect(() => {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
@@ -36,6 +37,11 @@ const Header = () => {
               <li className="item">
                 <Link to={"/products"}  onClick={handleClickRender}>
                   Products
+                </Link>
+              </li>
+              <li className="item">
+                <Link to="/search">
+                  <span>Search</span>
                 </Link>
               </li>
               <li className="item">

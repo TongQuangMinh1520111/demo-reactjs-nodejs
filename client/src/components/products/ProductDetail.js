@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Store } from "../../context/Store";
 import ProductModule from "../../modules/products.module";
@@ -34,9 +34,6 @@ const ProductDetail = () => {
       <div className="inner">
         {product ? (
           <div className="product_cont">
-            <div className="">
-              <Link to={"/products"}>back to products</Link>
-            </div>
             <div className="details_fr">
               <div className="box-left">
                 <figure className="product_img">
@@ -50,21 +47,26 @@ const ProductDetail = () => {
               </div>
               <div className="box-right">
                 <h3 className="c-ttl01">{product.name}</h3>
-                <p className="c-txt01">Category: {product.category}</p>
-                <p className="c-txt01">Brand: {product.brand}</p>
-                <p>Price: ${product.price}</p>
-                <p>
-                  Status:
-                  {product.countInStock > 0 ? "In stock" : "Unavailable"}
-                </p>
-                <button className="" onClick={addToCartHandler}>
+                <div className="p_meta">
+                  <p className="c-txt01">Brand: {product.brand}</p>
+                  <p className="c-txt01">
+                    Status:
+                    {product.countInStock > 0 ? "In stock" : "Unavailable"}
+                  </p>
+                  <p className="c-txt01">
+                    {product.rating} of {product.numReviews} reviews
+                  </p>
+                </div>
+                <p className="price">Price: ${product.price}</p>
+
+                <button className="primary-button" onClick={addToCartHandler}>
                   Add to cart
                 </button>
-                <p>
-                  {product.rating} of {product.numReviews} reviews
-                </p>
-                <p className="c-txt02">Description: {product.description}</p>
               </div>
+            </div>
+            <div className="product_info">
+              <p className="c-txt02">Description: {product.description}</p>
+              <p className="c-txt02">Category: {product.category}</p>
             </div>
           </div>
         ) : (

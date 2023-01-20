@@ -500,7 +500,41 @@ Contents
 #product_details .details_fr {
   display: flex;
 }
+#product_details .box-left {
+  margin-right: 30px;
+}
 
+#product_details .c-ttl01 {
+  font-size: 25px;
+  margin-bottom: 30px;
+}
+#product_details .c-txt01 {
+  font-size: 18px;
+  margin: 0;
+}
+#product_details .c-txt02 {
+  font-size: 16px;
+}
+#product_details .price {
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+#product_details .product_info {
+  margin-top: 40px;
+}
+#product_details .p_meta {
+  display: flex;
+  margin-bottom: 30px;
+}
+#product_details .p_meta p:not(:last-child) {
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: 1px solid #000;
+}
+#product_details .primary-button {
+  margin: 0;
+}
 .cart_table th {
   background: #000;
   color: #fff;
@@ -648,6 +682,12 @@ Contents
 #register .h3title,
 #order .h3title {
   text-align: center;
+}
+
+
+#p_search .search_form .inner {
+  max-width: calc(1000px + 6vw);
+  margin-bottom: 60px;
 }
 /* ------------------------------------------------------
 Footer

@@ -22,7 +22,6 @@ const Login = () => {
       alert(userLogin.errMsg);
     }
   };
-
   return (
     <div id="login">
       <div className="inner">
